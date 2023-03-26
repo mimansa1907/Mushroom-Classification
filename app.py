@@ -1,16 +1,16 @@
-# -*- coding: utf-8 -*-
-"""template_folder='template'
-Created on Wed Feb 22 23:36:47 2023
+# # -*- coding: utf-8 -*-
+# """template_folder='template'
+# Created on Wed Feb 22 23:36:47 2023
 
-@author: Lenovo
-"""
+# @author: Lenovo
+# """
 import json 
 import pickle
 from flask import Flask, request, app, jsonify, url_for, render_template
 import numpy as np
 import pandas as pd
 
-app = Flask(__name__, template_folder='Templates', static_folder='static')
+app = Flask(__name__,template_folder='Templates')
 #Load the model
 model = pickle.load(open('model.pkl','rb'))
 enc = pickle.load(open('encoding.pkl','rb'))
@@ -88,5 +88,5 @@ def predict():
     return render_template("home.html", prediction_text=result)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0',port = 80)
     
